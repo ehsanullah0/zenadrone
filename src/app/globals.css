@@ -1,0 +1,113 @@
+@import "tailwindcss";
+
+:root {
+  --color-primary: #8DC63F;
+  --color-primary-hover: #7AB036;
+  --color-dark: #000000;
+  --color-dark-lighter: #0a0a0a;
+  --background: #000000;
+  --foreground: #ffffff;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #000000;
+    --foreground: #f8fafc;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ANIMATION UTILITIES FROM AWWWARDS PROMPT */
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.bg-animated {
+  background: linear-gradient(270deg, #0a0a0a, #1a1a2e, #16213e);
+  background-size: 400% 400%;
+  animation: gradientShift 8s ease infinite;
+}
+
+/* Glitch Effect */
+.glitch-hover {
+  position: relative;
+  display: inline-block;
+}
+.glitch-hover:hover {
+  animation: glitch-anim 0.3s cubic-bezier(.25, .46, .45, .94) infinite both alternate;
+}
+@keyframes glitch-anim {
+  0% { transform: translate(0) }
+  20% { transform: translate(-2px, 2px); text-shadow: 2px 0 #1a6cf6, -2px 0 red; }
+  40% { transform: translate(-2px, -2px); text-shadow: -2px 0 #1a6cf6, 2px 0 red; }
+  60% { transform: translate(2px, 2px); text-shadow: 2px 0 #1a6cf6, -2px 0 red; }
+  80% { transform: translate(2px, -2px); text-shadow: -2px 0 #1a6cf6, 2px 0 red; }
+  100% { transform: translate(0) }
+}
+
+/* Glassmorphism */
+.glass-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.glass-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 20px rgba(255,255,255,0.05);
+}
+
+/* Character Stagger Core */
+.char {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(100px) rotate(10deg);
+}
+
+/* Particle Background */
+.particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(rgba(255,255,255,0.1) 1px, transparent 1px);
+  background-size: 50px 50px;
+  opacity: 0.3;
+  animation: floatDots 30s linear infinite;
+}
+
+@keyframes floatDots {
+  from { background-position: 0 0; }
+  to { background-position: 1000px 1000px; }
+}
+
+/* ANTI-GRAVITY & ZERO-G ANIMATIONS */
+@keyframes floatBob {
+  0% { transform: translateY(0px) rotate(-1deg); }
+  50% { transform: translateY(-20px) rotate(1deg); }
+  100% { transform: translateY(0px) rotate(-1deg); }
+}
+.float-bob {
+  animation: floatBob 6s ease-in-out infinite;
+}
+
+@keyframes drawLine {
+  to { width: 100%; opacity: 1; }
+}
+.glowing-line {
+  height: 1px;
+  background: linear-gradient(90deg, #1a6cf6, transparent);
+  box-shadow: 0 0 15px 1px #1a6cf6;
+}
+
